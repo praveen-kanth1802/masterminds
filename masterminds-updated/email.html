@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init('VoDwWecWNg5qoGhOj');
+        })();
+    </script>
+    <script type="text/javascript">
+        function sendMail(){
+            let params ={
+                from_name : document.getElementById('fullName').value,
+                email_id : document.getElementById('email').value,
+                message : document.getElementById('message').value
+            }     
+                emailjs.send("service_mvneoya","template_joh6n6z",params) .then(function() {
+                            alert('SUCCESS!');
+                        }, function(error) {
+                            alert('FAILED...', error);
+                        });
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="fullName" placeholder="Full Name" required> <br>
+    <input type="text" id="email" placeholder="Email" required> <br>
+    <textarea name="" id="message" cols="30" rows="10" placeholder="message" required></textarea>
+    <button onclick="sendMail()">Send</button>
+</body>
+</html>
